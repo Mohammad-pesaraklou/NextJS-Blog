@@ -1,0 +1,50 @@
+.imgSlider {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  opacity: 0.5;
+}
+.container {
+  /* height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    padding-bottom: 50px;
+    border-bottom: #f59115 1px solid;
+    margin: 0px 20px; */
+}
+
+.sliderContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.linkContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  text-decoration: none;
+  color: #f59115;
+}
+.slidTitle {
+  color: honeydew;
+  font-family: "Josefin Sans";
+  font-size: 18px;
+  display: none;
+  width: 35%;
+  font-weight: 600;
+  position: absolute;
+  z-index: 1000;
+}
+
+@media (max-width: 558px) {
+  .imgSlider {
+    height: 140px;
+    width: 140px;
+  }
+}
