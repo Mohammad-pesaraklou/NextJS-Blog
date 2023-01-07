@@ -14,7 +14,6 @@ const PostCard = ({ posts }) => {
         Aos.init({ duration: 2000 })
     }, [])
 
-    console.log(posts);
 
     const responsive = {
         0: {
@@ -34,7 +33,7 @@ const PostCard = ({ posts }) => {
         return (
             <div className={styles.sliderContainer} data-aos="fade-left" key={indx}>
 
-                <Link className={styles.linkContainer} href={`/`}>
+                <Link className={styles.linkContainer} href={`/posts/${i.slug}`}>
                     <img src={i.photoCover?.url}
                         className={styles.imgSlider}
                         alt="cover"

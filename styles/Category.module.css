@@ -1,0 +1,19 @@
+.container {
+  margin: 30px auto;
+}
+.text {
+  margin: 40px 30px;
+  font-family: "Josefin Sans";
+  font-size: 23px;
+  font-weight: 600;
+}
+.header {
+  font-family: "Josefin Sans";
+  color: #f59115;
+  margin: 20px 20px;
+}
+.text:hover {
+  color: #f59115;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}

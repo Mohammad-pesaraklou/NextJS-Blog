@@ -1,10 +1,15 @@
 import { Container, Grid, Typography } from "@mui/material";
-import LandingPosts from "../components/LandingPosts";
-import PostCard from "../components/PostCard";
-import { getFeaturedPost, getPosts } from "../services";
+// GraphQL Data
+import { getCategory, getFeaturedPost, getPosts } from "../services";
+// styles
 import styles from "../styles/Home.module.css";
+// components
+import PostCard from "../components/PostCard.jsx";
+import LandingPosts from "../components/LandingPosts";
+import Category from "../components/Category";
 
-function Home({ posts, mainPosts }) {
+function Home({ posts, mainPosts, category }) {
+
   return (
     <Container>
       <div>
@@ -25,7 +30,7 @@ function Home({ posts, mainPosts }) {
           <LandingPosts mainPosts={mainPosts.posts} />
         </Grid>
         <Grid item xs={12} sm={6}>
-          POst category
+          <Category categories={category?.categories} />
         </Grid>
       </Grid>
     </Container>
@@ -35,10 +40,13 @@ function Home({ posts, mainPosts }) {
 export async function getStaticProps() {
   const posts = (await getFeaturedPost()) || [];
   const mainPosts = (await getPosts()) || [];
+  const category = (await getCategory()) || [];
+
   return {
     props: {
       posts,
       mainPosts,
+      category,
     },
   };
 }
