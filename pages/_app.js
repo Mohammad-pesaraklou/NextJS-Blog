@@ -1,4 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+// For fix the hydration issue
+import { HydrationProvider, Client } from "react-hydration-provider";
 // global styles
 import "../styles/globals.css";
 // components
@@ -12,10 +14,14 @@ const client = new ApolloClient({
 
 export default function App({ Component, pageProps }) {
   return (
-    <ApolloProvider client={client}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ApolloProvider>
+    <HydrationProvider>
+      <Client>
+        <ApolloProvider client={client}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloProvider>
+      </Client>
+    </HydrationProvider>
   );
 }

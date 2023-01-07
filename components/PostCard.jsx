@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react';
-import { Typography } from '@mui/material';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useEffect } from 'react';
 import Aos from 'aos';
+import Link from 'next/link';
 // carousel
-import { Carousel } from 'react-responsive-carousel';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
 // styles
 import styles from '../Styles/PostCard.module.css';
-import Link from 'next/link';
 
 const PostCard = ({ posts }) => {
 
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
-        console.log(posts);
     }, [])
+
+    console.log(posts);
 
     const responsive = {
         0: {
@@ -28,31 +28,46 @@ const PostCard = ({ posts }) => {
         }
     };
 
-    let items = <div className={styles.sliderContainer} data-aos="fade-left">
+    const handleDragStart = (e) => e.preventDefault();
 
-        <Link className={styles.linkContainer} href={`/`}>
-            <img src={posts.photoCover?.url}
-                className={styles.imgSlider}
-                alt="cover" />
-            <p >
-                {posts.title}
-            </p>
-        </Link>
-    </div>
+    let items = posts?.map((i, indx) => {
+        return (
+            <div className={styles.sliderContainer} data-aos="fade-left" key={indx}>
+
+                <Link className={styles.linkContainer} href={`/`}>
+                    <img src={i.photoCover?.url}
+                        className={styles.imgSlider}
+                        alt="cover"
+                        onDragStart={handleDragStart}
+                    />
+                    <p >
+                        {i.title}
+                    </p>
+                </Link>
+            </div>
+        )
+    })
+
+
 
     return (
-        <div >
-            <Carousel
-            >
-
-                <div>
-                    <img src={posts.photoCover.url} alt="image1" />
-                    <p className="legend">{posts.title}</p>
-                </div>
-            </Carousel>
+        <div className={styles.container}>
+            <AliceCarousel
+                mouseTracking
+                infinite
+                autoPlayInterval={1000}
+                animationDuration={1500}
+                disableDotsControls
+                disableButtonsControls
+                responsive={responsive}
+                items={items}
+                autoPlay
+            />
         </div>
     );
 };
 
 
+
 export default PostCard;
+

@@ -1,24 +1,24 @@
 import { Typography } from "@mui/material";
-import { Inter } from "@next/font/google";
 import PostCard from "../components/PostCard";
 import { getFeaturedPost } from "../services";
 import styles from "../styles/Home.module.css";
 
 function Home({ posts }) {
+
+  
   return (
     <>
       <Typography
+       className={styles.featuredText}
         variant="h2"
         sx={{ ml: { xs: "24px", sm: 0 } }}
         fontFamily={"Josefin Sans"}
         color={"#f59115"}
         mt={9}
       >
-        Authors of This Blogs
+        Featured Posts
       </Typography>
-      {posts.posts.map((item) => {
-        return <PostCard posts={item} key={item.slug} />;
-      })}
+      <PostCard posts={posts?.posts} />
     </>
   );
 }
@@ -32,4 +32,5 @@ export async function getStaticProps() {
     },
   };
 }
+
 export default Home;

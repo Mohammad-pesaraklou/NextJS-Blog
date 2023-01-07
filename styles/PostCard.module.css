@@ -5,20 +5,21 @@
   opacity: 0.5;
 }
 .container {
-  /* height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    flex-direction: column;
-    padding-bottom: 50px;
-    border-bottom: #f59115 1px solid;
-    margin: 0px 20px; */
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  padding-bottom: 50px;
+  margin: 0px 20px;
+  border-bottom: 2px solid #f59115;
 }
 
 .sliderContainer {
   width: 100%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
