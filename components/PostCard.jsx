@@ -40,7 +40,7 @@ const PostCard = ({ posts }) => {
                         alt="cover"
                         onDragStart={handleDragStart}
                     />
-                    <p >
+                    <p className={styles.text}>
                         {i.title}
                     </p>
                 </Link>

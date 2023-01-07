@@ -1,10 +1,11 @@
+import { Container } from "@mui/material";
 import Head from "next/head";
 import Navbar from "./Navabr";
 
 
 const Layout = ({ children }) => {
     return (
-        <div>
+        <Container>
             <Navbar />
             <Head>
                 <title>Football Blog</title>
@@ -13,7 +14,7 @@ const Layout = ({ children }) => {
                 <link rel="icon" href='/favicon.ico' />
             </Head>
             {children}
-        </div>
+        </Container>
     );
 };
 

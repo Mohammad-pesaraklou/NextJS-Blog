@@ -35,6 +35,9 @@
   padding: 5px 0px;
   cursor: pointer;
   font-size: 35px;
+  font-family: "Josefin Sans";
+  font-weight: 600;
+  color: #f59115;
 }
 @media (max-width: 750px) {
   .navList {

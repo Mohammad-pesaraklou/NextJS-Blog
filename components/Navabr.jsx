@@ -10,11 +10,11 @@ const Navbar = () => {
     return (
         <div className={styles.container}>
             <Link href="/">
-                <Typography className={styles.logo} color={'#f59115'} fontWeight="500" fontFamily={'Josefin Sans'}
+                <p className={styles.logo}
 
                 >
                     Bloggy
-                </Typography>
+                </p>
             </Link>
             <div className={styles.list}>
                 <Link href="/">

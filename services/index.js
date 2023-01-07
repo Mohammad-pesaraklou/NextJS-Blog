@@ -25,3 +25,24 @@ export const getFeaturedPost = async () => {
 
   return result;
 };
+
+export const getPosts = async () => {
+  const PostsQuery = gql`
+    query MyPostsQuery {
+      posts {
+        id
+        photoCover {
+          url
+        }
+        text {
+          html
+        }
+        title
+      }
+    }
+  `;
+
+  const data = await request(END_POINT, PostsQuery);
+
+  return data;
+};
