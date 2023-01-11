@@ -14,6 +14,7 @@ const AuthorPost = ({ posts }) => {
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
+        
     })
 
     return (

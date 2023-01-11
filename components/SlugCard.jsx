@@ -21,6 +21,7 @@ import styles from '../styles/SlugCard.module.css';
 
 const MainCard = ({ posts }) => {
 
+    const [toggle, setToggle] = useState(false)
 
     useEffect(() => {
         Aos.init({ duration: 2000 });
@@ -102,22 +103,28 @@ const MainCard = ({ posts }) => {
                                     }}
                                 >
                                     <Link href={"/"}>
-                                        <Button
-                                            size="medium"
-                                            variant="contained"
-                                            sx={{ fontFamily: "Josefin Sans" }}
-                                        >
-                                            Back Home
-                                        </Button>
+                                        {
+                                            toggle ? <Button variant='disabled' sx={{ fontFamily: 'Josefin Sans' }}>Pending..</Button> :
+                                                <Button
+                                                    size="medium"
+                                                    variant="contained"
+                                                    sx={{ fontFamily: "Josefin Sans" }}
+                                                >
+                                                    Back Home
+                                                </Button>
+                                        }
                                     </Link>
                                     <Link href={`/posts/${item.node.slug}`}>
-                                        <Button
-                                            size="medium"
-                                            variant="contained"
-                                            sx={{ fontFamily: "Josefin Sans" }}
-                                        >
-                                            Read More
-                                        </Button>
+                                        {
+                                            toggle ? <Button variant='disabled' sx={{ fontFamily: 'Josefin Sans' }}>Pending..</Button> :
+                                                <Button
+                                                    size="medium"
+                                                    variant="contained"
+                                                    sx={{ fontFamily: "Josefin Sans" }}
+                                                >
+                                                    Read More
+                                                </Button>
+                                        }
                                     </Link>
                                 </CardActions>
                             </Card>

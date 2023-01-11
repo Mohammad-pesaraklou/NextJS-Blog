@@ -1,17 +1,24 @@
 import Aos from 'aos';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Link from 'next/link';
+// Data
+import { getAuthors } from '../services';
 // style
 import styles from '../styles/Category.module.css';
 
 
-const Author = ({ authors }) => {
+const Author = () => {
 
+    const [author, setAuthor] = useState(null);
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
+        getAuthors().then((res) => {
+            console.log(res);
+            setAuthor(res.authors)
+        })
     }, [])
 
     return (
@@ -37,7 +44,7 @@ const Author = ({ authors }) => {
                         <h1 className={styles.header}>Authors</h1>
                     </div>
                     {
-                        authors.authors.map(item => {
+                        author?.map(item => {
                             return (
                                 <div key={item?.id}>
 

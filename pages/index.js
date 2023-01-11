@@ -15,9 +15,7 @@ import LandingPosts from "../components/LandingPosts";
 import Category from "../components/Category";
 import Author from "../components/Author";
 
-function Home({ posts, mainPosts, category, authors }) {
-  console.log(authors);
-
+function Home({ mainPosts, category }) {
   return (
     <Container>
       <div>
@@ -31,33 +29,27 @@ function Home({ posts, mainPosts, category, authors }) {
         >
           Featured Posts
         </Typography>
-        <PostCard posts={posts?.posts} />
+        <PostCard />
       </div>
       <Grid container>
         <Grid item sm={12} md={6}>
           <LandingPosts mainPosts={mainPosts.posts} />
         </Grid>
         <Grid item sm={12} md={6}>
-          <Category categories={category?.categories} />
-          <Author authors={authors} />
+          <Category />
+          <Author />
         </Grid>
       </Grid>
     </Container>
   );
 }
 
-export async function getStaticProps({context}) {
-  const posts = (await getFeaturedPost()) || [];
+export async function getStaticProps() {
   const mainPosts = (await getPosts()) || [];
-  const category = (await getCategory()) || [];
-  const authors = (await getAuthors()) || [];
-  
+
   return {
     props: {
-      posts,
       mainPosts,
-      category,
-      authors,
     },
   };
 }

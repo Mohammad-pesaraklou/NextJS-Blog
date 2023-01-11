@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getPostDetails, getPosts } from "../../services";
 import {
   Card,
@@ -16,13 +16,14 @@ import moment from "moment";
 // style
 import styles from "./PostDetail.module.css";
 import CommentForm from "../../components/CommentForm";
+import Comments from "../../components/Comments";
 
 const PostDetails = ({ data }) => {
+  const [toggle, setToggle] = useState(false);
+
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
-
-  console.log(data);
 
   return (
     <Container>
@@ -99,20 +100,31 @@ const PostDetails = ({ data }) => {
                 }}
               >
                 <Link href={"/"}>
-                  <Button
-                    size="medium"
-                    variant="contained"
-                    sx={{ fontFamily: "Josefin Sans" }}
-                    color="warning"
-                  >
-                    Back Home
-                  </Button>
+                  {toggle ? (
+                    <Button
+                      variant="disabled"
+                      sx={{ fontFamily: "Josefin Sans", fontSize: "18px" }}
+                    >
+                      Pending..
+                    </Button>
+                  ) : (
+                    <Button
+                      size="medium"
+                      variant="contained"
+                      sx={{ fontFamily: "Josefin Sans" }}
+                      color="primary"
+                      onClick={() => setToggle(true)}
+                    >
+                      Back Home
+                    </Button>
+                  )}
                 </Link>
               </CardActions>
             </Card>
           </Grid>
           <Grid item sm={12} md={6}>
             <CommentForm slug={data.slug} />
+            <Comments slug={data.slug} />
           </Grid>
         </Grid>
       </div>
@@ -129,7 +141,6 @@ export async function getStaticProps({ params }) {
   } catch (err) {
     console.log(err);
   }
-  
 
   return {
     props: {

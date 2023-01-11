@@ -1,4 +1,4 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { submitComment } from '../services';
@@ -7,7 +7,6 @@ import styles from '../styles/CommentForm.module.css';
 
 const CommentForm = ({ slug }) => {
 
-    const router = useRouter()
 
 
     const [formData, setFormData] = useState({ name: '', email: '', text: '' });
@@ -17,6 +16,9 @@ const CommentForm = ({ slug }) => {
     const onChangHandler = (event) => {
         setFormData({ ...formData, [event.target.name]: event.target.value })
     }
+
+
+
 
     const submitHandler = () => {
         setError(false);
@@ -32,22 +34,28 @@ const CommentForm = ({ slug }) => {
             slug,
         };
 
-
         submitComment(commentObj)
             .then((res) => {
                 if (res.createComment) {
                     formData.text = '';
+                    formData.name = '';
+                    formData.email = '';
                     setFormData((prevState) => ({
                         ...prevState,
                         ...formData,
                     }));
                     setSuccessMsg(true);
-                    setTimeout(() => {
-                        setSuccessMsg(false);
-                    }, 3000);
                 }
             });
+
+        setTimeout(() => {
+            setSuccessMsg(false);
+        }, 3000);
     };
+
+
+
+
 
     return (
         <Container>
@@ -60,61 +68,50 @@ const CommentForm = ({ slug }) => {
                 maxWidth: { xs: '350px', md: '400px' }
 
             }}>
-                <Grid item xs={12}>
-                    <Typography variant="h5" color="textPrimary" fontWeight={700}
+
+                <Grid item xs={12} mb={4} className={styles.headerContainer}>
+                    <Typography variant="h5" color={successMsg ? 'green' : "rgb(43, 42, 42)"} fontWeight={700}
                         sx={{
-                            ml: 3,
-                            mt: 3
+                            mb: 3,
+                            ml: 1,
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            alignItems: 'center',
+                            fontFamily: 'Josefin Sans',
+
                         }}>
                         Send Comment
                     </Typography>
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
-                    <input name="name" value={formData.name} onChange={onChangHandler} />
-                    {/* <TextField
-                    label={<Typography variant="p" component="p"
-                        onChange={(e) => setFormDataonChangHandler)}
-                    >
-                        User Name
-                    </Typography>}
-                    color='warning'
-                    sx={{ width: "800px", mt: 8 }}
-                /> */}
+                    <input className={styles.input} name="name" value={formData.name} onChange={onChangHandler} />
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
-                    {/* <TextField
-                    label={<Typography variant="p" component="p"
-                        onChange={(e) => setFormData(onChangHandler)}
-                    >
-                        Email
-                    </Typography>}
-                    color='warning'
-                    sx={{ width: "800px", mt: 5 }}
-                /> */}
-                    <input name="email" value={formData.email} onChange={onChangHandler} />
+                    <input className={styles.input} name="email" value={formData.email} onChange={onChangHandler} />
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
-                    {/* <TextField
-                        label={<Typography variant="p" component="p" value={text}
-                            onChange={(e) => setFormData(onChangHandler)}
-                        >
-                            Comment Text
-                        </Typography>}
-                        multiline
-                        rows={5}
-                        color='warning'
-                        sx={{ width: "800px", mt: 5, mb: 8 }}
-                    /> */}
-                    <input name="text" value={formData.text} onChange={onChangHandler} />
+                    <textarea className={styles.input} style={{ minHeight: '80px' }} name="text" value={formData.text} onChange={onChangHandler} />
+                </Grid>
+                <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: "center" }}>
+                    {error && <Alert sx={{ fontFamily: 'Josefin Sans' }} severity="error" color="error">
+                        All Fields are Mandatory
+                    </Alert>}
+                </Grid>
+                <Grid item xs={12} my={successMsg ? 4 : 0} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    {
+                        successMsg && <Alert sx={{ fontFamily: 'Josefin Sans' }} severity="success" color="success">
+                            Your Comment Send SuccessFully, Please Wait for Confirmation
+                        </Alert>
+                    }
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {
-                        <Button variant='contained' onClick={submitHandler} color="warning" sx={{ width: '150px', fontFamily: 'Josefin Sans' }}>
+                        <Button variant='contained' onClick={submitHandler} color={successMsg ? 'success' : "primary"} sx={{ width: '150px', fontFamily: 'Josefin Sans', mt: 3 }}>
                             Send
                         </Button>
                     }
-                </Grid>  <Grid item xs={12} sx={{ ml: 7, mb: 4 }}>
                 </Grid>
+
             </Grid >
         </Container>
     );

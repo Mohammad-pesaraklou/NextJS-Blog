@@ -2,13 +2,22 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Aos from 'aos';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BiFootball } from 'react-icons/bi';
+import { getCategory } from '../services';
 // style
 import styles from '../styles/Category.module.css';
 
-const Category = ({ categories }) => {
+const Category = () => {
 
+    const [categories, setCategories] = useState(null)
+
+    useEffect(() => {
+        Aos.init({ duration: 2000 });
+        getCategory().then(res => {
+            setCategories(res.categories)
+        })
+    },[])
 
     return (
         <div className={styles.container}>
@@ -32,7 +41,7 @@ const Category = ({ categories }) => {
                     <div className={styles.headerContainer}>
                         <h1 className={styles.header}>Categories</h1>
                     </div>
-                    {categories.map(item => {
+                    {categories?.map(item => {
                         return (
                             <div key={item?.id}>
 

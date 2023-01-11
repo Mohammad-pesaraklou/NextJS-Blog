@@ -81,7 +81,7 @@ const LandingPosts = ({ mainPosts }) => {
                                 <CardActions sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', my: 2 }}>
                                     {
                                         toggle ?
-                                            <Button size="medium" onClick={() => setToggle(!toggle)} variant='disabled' sx={{ fontFamily: "Josefin Sans" }}>Read More</Button> :
+                                            <Button size="medium" onClick={() => setToggle(!toggle)} variant='disabled' sx={{ fontFamily: "Josefin Sans", fontSize: '17px' }}>Pending..</Button> :
                                             <Button size="medium" onClick={() => setToggle(!toggle)} variant='contained' sx={{ fontFamily: "Josefin Sans" }}>Read More</Button>
                                     }
                                 </CardActions>

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Aos from 'aos';
 import Link from 'next/link';
 // carousel
@@ -6,13 +6,18 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 // styles
 import styles from '../Styles/PostCard.module.css';
+import { getFeaturedPost } from '../services';
 
-const PostCard = ({ posts }) => {
+const PostCard = () => {
 
-
+    const [posts, setPosts] = useState(null)
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
+        getFeaturedPost().then(res => {
+            setPosts(res.posts)
+        })
+        console.log(posts);
     }, [])
 
 
