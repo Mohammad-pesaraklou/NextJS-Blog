@@ -10,6 +10,7 @@ import styles from '../Styles/PostCard.module.css';
 const PostCard = ({ posts }) => {
 
 
+
     useEffect(() => {
         Aos.init({ duration: 2000 })
     }, [])

@@ -10,6 +10,10 @@ import styles from '../styles/Category.module.css';
 const Category = ({ categories }) => {
 
 
+    useEffect(() => {
+        Aos.init({ duration: 2000 })
+    })
+
     return (
         <div className={styles.container}>
             <Box
@@ -32,18 +36,21 @@ const Category = ({ categories }) => {
                     <div className={styles.headerContainer}>
                         <h1 className={styles.header}>Categories</h1>
                     </div>
-                    {categories.map(item => {
-                        return (
-                            <div key={item?.id}>
 
-                                <div className={styles.text}>
-                                    <Link href={`/category/:${item.slug}`}>
-                                        <li>{item?.name}</li>
-                                    </Link>
-                                </div>
-                            </div>
-                        )
-                    })}
+                    <div>
+
+                        <div className={styles.text}>
+                            <Link href={`/category/football-club`}>
+                                <li>Football Club</li>
+                            </Link>
+                        </div>
+                        <div className={styles.text}>
+                            <Link href={`/category/football-player`}>
+                                <li>Football Player</li>
+                            </Link>
+                        </div>
+                    </div>
+
                 </Paper>
             </Box>
         </div>

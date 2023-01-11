@@ -1,8 +1,13 @@
+.photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+}
 .container {
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px 0px;
+  margin: 30px 0px; */
 }
 
 .box:hover {
@@ -12,24 +17,14 @@
   transition: all 0.1s ease-in-out;
 }
 .text {
-  margin: 40px 30px;
+  margin: 30px 10px;
   font-family: "Josefin Sans";
-  font-size: 23px;
-  font-weight: 600;
-}
-.authorText {
-  margin: 40px 20px;
-  font-family: "Josefin Sans";
-  font-size: 23px;
+  font-size: 15px;
   font-weight: 600;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 10px;
-}
-.authorText:hover {
-  color: #f59115;
-  cursor: pointer;
-  transition: all 0.1s ease-in-out;
 }
 .header {
   font-family: "Josefin Sans";

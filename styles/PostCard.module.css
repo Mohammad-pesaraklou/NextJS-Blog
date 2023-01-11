@@ -38,10 +38,16 @@
   color: #dbd8d6;
 }
 
-@media (max-width: 958px) {
+@media (max-width: 1158px) {
   .imgSlider {
     height: 240px;
     width: 240px;
+  }
+}
+@media (max-width: 958px) {
+  .imgSlider {
+    height: 200px;
+    width: 200px;
   }
 }
 @media (max-width: 558px) {

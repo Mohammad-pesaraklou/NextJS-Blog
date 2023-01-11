@@ -1,3 +1,12 @@
+.authorSection {
+  margin: 40px 0px 40px 0px;
+  font-size: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+  align-items: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -10,16 +19,7 @@
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   transition: all 0.1s ease-in-out;
 }
-.authorSection {
-  margin: 40px 0px 40px 0px;
-  font-size: 20px;
-  display: flex;
-  justify-content: flex-start;
-  gap: 50px;
-  align-items: center;
-}
-@media (max-width: 550px) {
-  .authorHeadText {
-    font-size: 15px;
-  }
+.linkText:hover {
+  color: #f59115;
+  transition: all 0.1ms ease-in-out;
 }
