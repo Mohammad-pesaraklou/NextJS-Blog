@@ -16,7 +16,6 @@ const Author = () => {
     useEffect(() => {
         Aos.init({ duration: 2000 })
         getAuthors().then((res) => {
-            console.log(res);
             setAuthor(res.authors)
         })
     }, [])

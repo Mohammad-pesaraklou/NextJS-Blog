@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { getPostDetails, getPosts } from "../../services";
 import {
   Card,
@@ -17,6 +17,7 @@ import moment from "moment";
 import styles from "./PostDetail.module.css";
 import CommentForm from "../../components/CommentForm";
 import Comments from "../../components/Comments";
+import { ThemeContext } from "../../context/ThemeContextProvider";
 
 const PostDetails = ({ data }) => {
   const [toggle, setToggle] = useState(false);
@@ -24,23 +25,29 @@ const PostDetails = ({ data }) => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+  const { activeNav, setActiveNav } = useContext(ThemeContext);
+
+  const themeHandler = (e) => {
+    setActiveNav(e.target.textContent);
+    setToggle(true);
+  };
 
   return (
     <Container>
       <div className={styles.container}>
         <Grid
           container
-          spacing={10}
+          spacing={20}
           sx={{
             display: "flex",
             justifyContent: "center",
-            flexDirection: { sm: "column", md: "row" },
-            alignItems: { xs: "center", md: "flex-start" },
+            flexDirection: { md: "column", lg: "row" },
+            alignItems: { xs: "center", lg: "flex-start" },
           }}
         >
-          <Grid item sm={12} md={6}>
+          <Grid item md={12} lg={6}>
             <Card
-              sx={{ maxWidth: 845, mb: 3, mt: 5 }}
+              sx={{ maxWidth: 1000, mb: 3, mt: 5, minWidth: { lg: 550 } }}
               data-aos="fade-left"
               className={styles.cardContainer}
             >
@@ -103,26 +110,42 @@ const PostDetails = ({ data }) => {
                   {toggle ? (
                     <Button
                       variant="disabled"
-                      sx={{ fontFamily: "Josefin Sans", fontSize: "18px" }}
+                      sx={{ fontFamily: "Josefin Sans" }}
                     >
                       Pending..
                     </Button>
                   ) : (
                     <Button
+                      color="secondary"
                       size="medium"
                       variant="contained"
-                      sx={{ fontFamily: "Josefin Sans" }}
-                      color="primary"
-                      onClick={() => setToggle(true)}
+                      sx={{ fontFamily: "Josefin Sans", color: "wheat" }}
                     >
-                      Back Home
+                      back
+                      <span
+                        onClick={themeHandler}
+                        style={{ marginLeft: "3px" }}
+                        value="Home"
+                      >
+                        Home
+                      </span>
                     </Button>
                   )}
                 </Link>
               </CardActions>
             </Card>
           </Grid>
-          <Grid item sm={12} md={6}>
+          <Grid
+            item={12}
+            lg={6}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+
+              flexDirection: { xs: "column", md: "row", lg: "column" },
+            }}
+          >
             <CommentForm slug={data.slug} />
             <Comments slug={data.slug} />
           </Grid>

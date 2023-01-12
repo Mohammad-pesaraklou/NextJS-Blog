@@ -19,14 +19,16 @@ const Comments = ({ slug }) => {
             <Grid container spacing={1} sx={{
                 borderRadius: 4,
                 mt: 5,
+                ml: { xs: .1, md: 0 },
                 background: "#ecececed",
                 p: 4,
                 maxWidth: { xs: '350px', md: '400px' },
-                minHeight: 500
+                minHeight: 500,
+
             }}>
                 <Grid item xs={12}>
                     <Grid item xs={12} mb={4} className={styles.headerContainer}>
-                        <Typography variant="h5" color={"rgb(43, 42, 42)"} fontWeight={700}
+                        <Typography variant="h5" color={"#413f3e"} fontWeight={700}
                             sx={{
                                 mb: 3,
                                 ml: 1,
@@ -35,7 +37,7 @@ const Comments = ({ slug }) => {
                                 alignItems: 'center',
                                 fontFamily: 'Josefin Sans',
                             }}>
-                            Send Comment
+                            Comments
                         </Typography>
                     </Grid>
                     {

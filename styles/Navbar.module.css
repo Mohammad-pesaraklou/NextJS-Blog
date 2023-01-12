@@ -28,11 +28,10 @@
 }
 
 .navList:hover {
-  background-color: #f59115;
-  color: #3b3939;
+  color: #5c5a5a;
   transition: all 0.2s ease-in;
   cursor: pointer;
-  border: none;
+  /* border: none; */
   font-weight: 600;
 }
 .logo {
@@ -50,6 +49,13 @@
 .listTwo {
   display: none;
 }
+
+.activeLink {
+  background-color: #f59115;
+  color: wheat;
+  border: none;
+}
+
 @media (max-width: 950px) {
   .container {
     flex-direction: column;

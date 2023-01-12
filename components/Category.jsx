@@ -2,8 +2,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Aos from 'aos';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BiFootball } from 'react-icons/bi';
+import { ThemeContext } from '../context/ThemeContextProvider';
 import { getCategory } from '../services';
 // style
 import styles from '../styles/Category.module.css';
@@ -11,13 +12,18 @@ import styles from '../styles/Category.module.css';
 const Category = () => {
 
     const [categories, setCategories] = useState(null)
+    const { activeNav, setActiveNav } = useContext(ThemeContext)
+
+    const themeHandler = (e) => {
+        setActiveNav(e.target.textContent)
+    }
 
     useEffect(() => {
         Aos.init({ duration: 2000 });
         getCategory().then(res => {
             setCategories(res.categories)
         })
-    },[])
+    }, [])
 
     return (
         <div className={styles.container}>
@@ -47,7 +53,7 @@ const Category = () => {
 
                                 <div className={styles.text}>
                                     <Link href={`/category/:${item.slug}`}>
-                                        <li>{item?.name}</li>
+                                        <li onClick={() => setActiveNav(item.name)}>{item?.name}</li>
                                     </Link>
                                 </div>
                             </div>

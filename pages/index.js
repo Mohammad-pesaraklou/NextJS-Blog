@@ -31,7 +31,14 @@ function Home({ mainPosts, category }) {
         </Typography>
         <PostCard />
       </div>
-      <Grid container>
+      <Grid
+        container
+        sx={{
+          display: "flex",
+          alignItems: { xs: "center", md: "flex-start" },
+          justifyContent: { xs: "center", md: "flex-start" },
+        }}
+      >
         <Grid item sm={12} md={6}>
           <LandingPosts mainPosts={mainPosts.posts} />
         </Grid>

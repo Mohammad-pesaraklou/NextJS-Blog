@@ -25,6 +25,9 @@ const CommentForm = ({ slug }) => {
         const { name, email, text } = formData;
         if (!name || !email || !text) {
             setError(true);
+            setTimeout(() => {
+                setError(false)
+            }, 4000)
             return;
         }
         const commentObj = {
@@ -45,12 +48,12 @@ const CommentForm = ({ slug }) => {
                         ...formData,
                     }));
                     setSuccessMsg(true);
+                    setTimeout(() => {
+                        setSuccessMsg(false);
+                    }, 4000);
                 }
             });
 
-        setTimeout(() => {
-            setSuccessMsg(false);
-        }, 3000);
     };
 
 
@@ -60,9 +63,8 @@ const CommentForm = ({ slug }) => {
     return (
         <Container>
             <Grid className={styles.cardContainer} container sx={{
-                boxShadow: "rgba(0,0,0,0.1) 0px 4px 12px",
                 borderRadius: 4,
-                mt: 5,
+                mt: { xs: 0, md: 4.2 },
                 background: "#ecececed",
                 p: 4,
                 maxWidth: { xs: '350px', md: '400px' }
@@ -70,7 +72,7 @@ const CommentForm = ({ slug }) => {
             }}>
 
                 <Grid item xs={12} mb={4} className={styles.headerContainer}>
-                    <Typography variant="h5" color={successMsg ? 'green' : "rgb(43, 42, 42)"} fontWeight={700}
+                    <Typography variant="h5" color={successMsg ? 'green' : "#413f3e"} fontWeight={700}
                         sx={{
                             mb: 3,
                             ml: 1,
@@ -106,7 +108,7 @@ const CommentForm = ({ slug }) => {
                 </Grid>
                 <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     {
-                        <Button variant='contained' onClick={submitHandler} color={successMsg ? 'success' : "primary"} sx={{ width: '150px', fontFamily: 'Josefin Sans', mt: 3 }}>
+                        <Button variant='contained' onClick={submitHandler} color={successMsg ? 'success' : 'secondary'} sx={{ width: '150px', fontFamily: 'Josefin Sans', mt: 3 }}>
                             Send
                         </Button>
                     }

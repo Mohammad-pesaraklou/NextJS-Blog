@@ -1,14 +1,17 @@
+import { useContext } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Aos from 'aos';
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { BiFootball } from 'react-icons/bi';
+import { ThemeContext } from '../context/ThemeContextProvider';
 // style
 import styles from '../styles/Category.module.css';
 
 const Category = ({ categories }) => {
 
+    const { activeNav, setActiveNav } = useContext(ThemeContext)
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
@@ -41,12 +44,12 @@ const Category = ({ categories }) => {
 
                         <div className={styles.text}>
                             <Link href={`/category/football-club`}>
-                                <li>Football Club</li>
+                                <li onClick={(e) => setActiveNav(e.target.textContent)}>Football CLub</li>
                             </Link>
                         </div>
                         <div className={styles.text}>
                             <Link href={`/category/football-player`}>
-                                <li>Football Player</li>
+                                <li onClick={(e) => setActiveNav(e.target.textContent)}>Football Player</li>
                             </Link>
                         </div>
                     </div>

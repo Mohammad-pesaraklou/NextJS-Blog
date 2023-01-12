@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import {
@@ -17,6 +17,7 @@ import Aos from "aos";
 import { slicer } from "../helper/functions";
 // style
 import styles from '../styles/SlugCard.module.css';
+import { ThemeContext } from '../context/ThemeContextProvider';
 
 
 const MainCard = ({ posts }) => {
@@ -26,7 +27,6 @@ const MainCard = ({ posts }) => {
     useEffect(() => {
         Aos.init({ duration: 2000 });
     }, [])
-
 
 
     return (
@@ -102,25 +102,16 @@ const MainCard = ({ posts }) => {
                                         my: 2,
                                     }}
                                 >
-                                    <Link href={"/"}>
-                                        {
-                                            toggle ? <Button variant='disabled' sx={{ fontFamily: 'Josefin Sans' }}>Pending..</Button> :
-                                                <Button
-                                                    size="medium"
-                                                    variant="contained"
-                                                    sx={{ fontFamily: "Josefin Sans" }}
-                                                >
-                                                    Back Home
-                                                </Button>
-                                        }
-                                    </Link>
+
                                     <Link href={`/posts/${item.node.slug}`}>
                                         {
                                             toggle ? <Button variant='disabled' sx={{ fontFamily: 'Josefin Sans' }}>Pending..</Button> :
                                                 <Button
+                                                    color="secondary"
                                                     size="medium"
                                                     variant="contained"
-                                                    sx={{ fontFamily: "Josefin Sans" }}
+                                                    sx={{ fontFamily: "Josefin Sans", color: 'wheat' }}
+                                                    onClick={() => setToggle(true)}
                                                 >
                                                     Read More
                                                 </Button>

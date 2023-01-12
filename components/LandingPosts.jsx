@@ -10,13 +10,23 @@ import { slicer } from '../helper/functions';
 // component
 import Loader from '../components/Loader';
 import moment from 'moment';
+import { useContext } from 'react';
+import { ThemeContext } from '../context/ThemeContextProvider';
 
 
 const LandingPosts = ({ mainPosts }) => {
 
     const [toggle, setToggle] = useState(false)
+    const { setActiveNav } = useContext(ThemeContext);
 
-    const router = useRouter()
+
+    const router = useRouter();
+
+
+    const themHandler = (e) => {
+        setToggle(true)
+        setActiveNav(e.target.textContent)
+    }
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
@@ -81,8 +91,8 @@ const LandingPosts = ({ mainPosts }) => {
                                 <CardActions sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', my: 2 }}>
                                     {
                                         toggle ?
-                                            <Button size="medium" onClick={() => setToggle(!toggle)} variant='disabled' sx={{ fontFamily: "Josefin Sans", fontSize: '17px' }}>Pending..</Button> :
-                                            <Button size="medium" onClick={() => setToggle(!toggle)} variant='contained' sx={{ fontFamily: "Josefin Sans" }}>Read More</Button>
+                                            <Button size="medium" onClick={themHandler} variant='disabled' sx={{ fontFamily: "Josefin Sans", fontSize: '17px' }}>Pending..</Button> :
+                                            <Button size="medium" onClick={themHandler} variant='contained' color="secondary" sx={{ fontFamily: "Josefin Sans", color: 'white' }}>Read More</Button>
                                     }
                                 </CardActions>
                             </Link>
