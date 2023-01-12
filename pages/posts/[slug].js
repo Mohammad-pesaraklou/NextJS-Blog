@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { getPostDetails, getPosts } from "../../services";
 import {
   Card,
   CardActions,
@@ -12,26 +11,35 @@ import {
 } from "@mui/material";
 import Aos from "aos";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import moment from "moment";
+// data
+import { getPostDetails, getPosts } from "../../services";
 // style
 import styles from "./PostDetail.module.css";
-import CommentForm from "../../components/CommentForm";
-import Comments from "../../components/Comments";
+// component
+import CommentForm from "../../components/comment/CommentForm";
+import Comments from "../../components/comment/Comments";
+// context
 import { ThemeContext } from "../../context/ThemeContextProvider";
 
 const PostDetails = ({ data }) => {
   const [toggle, setToggle] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
-  const { activeNav, setActiveNav } = useContext(ThemeContext);
+  const { setActiveNav } = useContext(ThemeContext);
 
   const themeHandler = (e) => {
     setActiveNav(e.target.textContent);
     setToggle(true);
   };
 
+  if (router.isFallback) {
+    return <Loader />;
+  }
   return (
     <Container>
       <div className={styles.container}>
@@ -178,7 +186,7 @@ export async function getStaticPaths() {
   const paths = posts?.posts.map((item) => {
     return {
       params: {
-        slug: item.id,
+        slug: item.slug,
       },
     };
   });

@@ -1,14 +1,14 @@
-import React from 'react';
-import AuthorCard from '../../components/AuthorCard';
+// components
+import AuthorCard from '../../components/Author/AuthorCard';
+// data
 import { getAuthors, getAuthorsDetails } from '../../services';
 
 const AuthorDetails = ({ data }) => {
 
-    console.log(data);
 
     return (
         <div>
-            <AuthorCard data={data}/>
+            <AuthorCard data={data} />
         </div>
     );
 };
@@ -18,7 +18,6 @@ export default AuthorDetails;
 
 export async function getStaticProps({ params }) {
     const data = await getAuthorsDetails(params.slug)
-    console.log(data);
     return {
         props: {
             data

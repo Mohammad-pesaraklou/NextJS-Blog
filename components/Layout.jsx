@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+// components
 import Head from "next/head";
 import Navbar from "./Navabr";
 

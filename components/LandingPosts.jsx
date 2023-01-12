@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Card, CardActions, CardContent, CardMedia, Typography, Button } from '@mui/material'
+import { useRouter } from 'next/router';
 import Aos from 'aos';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import moment from 'moment';
 // styles
 import styles from '../styles/Landing.module.css';
 // helper function
 import { slicer } from '../helper/functions';
 // component
 import Loader from '../components/Loader';
-import moment from 'moment';
-import { useContext } from 'react';
+// context
 import { ThemeContext } from '../context/ThemeContextProvider';
 
 

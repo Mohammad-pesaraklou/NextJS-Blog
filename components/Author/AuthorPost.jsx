@@ -4,17 +4,16 @@ import Aos from 'aos';
 import Link from 'next/link';
 import { useEffect } from 'react';
 // style
-import styles from '../styles/AuthorDetails.module.css';
+import styles from '../../styles/AuthorDetails.module.css';
 
 
 const AuthorPost = ({ posts }) => {
 
 
-    console.log(posts);
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
-        
+
     })
 
     return (
@@ -43,7 +42,6 @@ const AuthorPost = ({ posts }) => {
                     <div>
                         {
                             posts.posts.map(item => {
-                                console.log(item);
                                 return (
                                     <Link href={`/posts/${item.slug}`}>
                                         <div className={styles.container}>

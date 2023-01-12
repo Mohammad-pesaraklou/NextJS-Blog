@@ -1,9 +1,12 @@
-import { Avatar, Grid, Typography } from "@mui/material";
-import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import { getComments } from "../services";
+import { Avatar, Grid, Typography, Container } from "@mui/material";
+// data
+import { getComments } from "../../services";
 // style
-import styles from '../styles/CommentForm.module.css'
+import styles from '../../styles/CommentForm.module.css';
+
+
+
 const Comments = ({ slug }) => {
 
     const [comments, setComments] = useState(null)
@@ -24,7 +27,7 @@ const Comments = ({ slug }) => {
                 p: 4,
                 maxWidth: { xs: '350px', md: '400px' },
                 minHeight: 500,
-
+                mb: 5
             }}>
                 <Grid item xs={12}>
                     <Grid item xs={12} mb={4} className={styles.headerContainer}>

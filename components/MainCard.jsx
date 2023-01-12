@@ -1,6 +1,4 @@
-import React, { useContext } from 'react';
 import { useEffect, useState } from "react";
-import { Grid } from "@mui/material";
 import {
     Card,
     CardActions,
@@ -8,7 +6,6 @@ import {
     CardMedia,
     Typography,
     Button,
-    Container,
 } from "@mui/material";
 import moment from "moment";
 import Link from "next/link";
@@ -17,7 +14,6 @@ import Aos from "aos";
 import { slicer } from "../helper/functions";
 // style
 import styles from '../styles/SlugCard.module.css';
-import { ThemeContext } from '../context/ThemeContextProvider';
 
 
 const MainCard = ({ posts }) => {

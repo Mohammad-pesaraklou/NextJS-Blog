@@ -146,6 +146,9 @@ export const getAuthors = async () => {
         avatar {
           url
         }
+        description {
+          text
+        }
         slug
       }
     }
@@ -163,6 +166,7 @@ export const getAuthorsDetails = async (slug) => {
         name
         id
         slug
+        field
         avatar {
           url
         }
@@ -170,12 +174,12 @@ export const getAuthorsDetails = async (slug) => {
           text
         }
       }
-      posts {
+      posts(where: { author: { slug: $slug } }) {
+        title
+        slug
         photoCover {
           url
         }
-        title
-        slug
       }
     }
   `;
@@ -201,16 +205,14 @@ export const getComments = async (slug) => {
   return data;
 };
 
-
 export const submitComment = async (obj) => {
-  const result = await fetch('/api/comment', {
-    method: 'POST',
+  const result = await fetch("/api/comment", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(obj),
   });
 
   return result.json();
 };
-

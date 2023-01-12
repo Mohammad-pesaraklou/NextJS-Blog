@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Link from 'next/link';
 // Data
-import { getAuthors } from '../services';
+import { getAuthors } from '../../services';
 // style
-import styles from '../styles/Category.module.css';
+import styles from '../../styles/Category.module.css';
 
 
 const Author = () => {
@@ -29,7 +29,7 @@ const Author = () => {
                     '& > :not(style)': {
                         m: 1,
                         width: 300,
-                        height: 328,
+                        minHeight: 408,
                     },
                 }}
                 data-aos="fade-left"

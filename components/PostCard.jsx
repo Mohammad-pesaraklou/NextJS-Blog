@@ -6,6 +6,7 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 // styles
 import styles from '../Styles/PostCard.module.css';
+// data
 import { getFeaturedPost } from '../services';
 
 const PostCard = () => {

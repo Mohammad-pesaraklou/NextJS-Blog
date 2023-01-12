@@ -1,10 +1,11 @@
+import { useContext, useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Aos from 'aos';
 import Link from 'next/link';
-import { useContext, useEffect, useState } from 'react';
-import { BiFootball } from 'react-icons/bi';
+// context
 import { ThemeContext } from '../context/ThemeContextProvider';
+// data
 import { getCategory } from '../services';
 // style
 import styles from '../styles/Category.module.css';
@@ -52,7 +53,7 @@ const Category = () => {
                             <div key={item?.id}>
 
                                 <div className={styles.text}>
-                                    <Link href={`/category/:${item.slug}`}>
+                                    <Link href={`/category/${item.slug}`}>
                                         <li onClick={() => setActiveNav(item.name)}>{item?.name}</li>
                                     </Link>
                                 </div>

@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Grid } from "@mui/material";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  Button,
-  Container,
-} from "@mui/material";
-import moment from "moment";
-import Link from "next/link";
+import { Container } from "@mui/material";
 import Aos from "aos";
-// function
-import { slicer } from "../../helper/functions";
+import { useRouter } from "next/router";
+// data
 import { getCategory, getCategoryPost } from "../../services";
 // styles
 import styles from "./slug.module.css";
 // components
-import SecondCategory from "../../components/SecondCategory";
-import MainCard from "../../components/SlugCard";
+import MainCard from "../../components/MainCard";
+import Category from "../../components/Category";
 
 const CategoryPosts = ({ posts }) => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
+
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
 
   return (
     <Container>
@@ -35,7 +31,7 @@ const CategoryPosts = ({ posts }) => {
               <MainCard posts={posts} />
             </Grid>
             <Grid item sm={12} md={6}>
-              <SecondCategory />
+              <Category />
             </Grid>
           </Grid>
         </div>

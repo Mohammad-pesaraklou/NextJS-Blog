@@ -1,21 +1,23 @@
 import { Container, Grid, Typography } from "@mui/material";
 // GraphQL Data
-import {
-  getAuthors,
-  getCategory,
-  getCategoryPost,
-  getFeaturedPost,
-  getPosts,
-} from "../services";
+import { getPosts } from "../services";
 // styles
 import styles from "../styles/Home.module.css";
 // components
 import PostCard from "../components/PostCard.jsx";
 import LandingPosts from "../components/LandingPosts";
 import Category from "../components/Category";
-import Author from "../components/Author";
+import Author from "../components/Author/Author";
+import { useRouter } from "next/router";
+import Loader from "../components/Loader";
 
-function Home({ mainPosts, category }) {
+function Home({ mainPosts }) {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <Loader />;
+  }
+
   return (
     <Container>
       <div>

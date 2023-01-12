@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 30px 50px;
+  z-index: 100;
 }
 .list {
   display: flex;
@@ -28,7 +29,7 @@
 }
 
 .navList:hover {
-  color: #5c5a5a;
+  color: #828282;
   transition: all 0.2s ease-in;
   cursor: pointer;
   /* border: none; */

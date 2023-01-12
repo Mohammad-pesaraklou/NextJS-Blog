@@ -1,11 +1,11 @@
 import { gql, GraphQLClient } from "graphql-request";
 
-const graphqlEndPoint =
-  "https://api-us-west-2.hygraph.com/v2/clc392yl62mde01tec19x5nrg/master";
+const graphqlEndPoint = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 const graphCmsToken = process.env.NEXT_PUBLIC_GRAPHCMS_TOKEN;
 
 export default async function asynchandler(req, res) {
+  
   const graphQLClient = new GraphQLClient(graphqlEndPoint, {
     headers: {
       authorization: `Bearer ${graphCmsToken}`,
@@ -40,4 +40,3 @@ export default async function asynchandler(req, res) {
     return res.status(500).send(error);
   }
 }
- 

@@ -1,7 +1,6 @@
 import Link from 'next/link'
-
-
 import { useContext } from 'react';
+// context
 import { ThemeContext } from '../context/ThemeContextProvider';
 // styles
 import styles from '../Styles/Navbar.module.css';
@@ -10,6 +9,7 @@ import styles from '../Styles/Navbar.module.css';
 const Navbar = () => {
 
     const { activeNav, setActiveNav } = useContext(ThemeContext);
+
 
 
 
@@ -37,16 +37,16 @@ const Navbar = () => {
                         Home
                     </p>
                 </Link>
-                <Link href={'/about'} className={styles.listChild}>
+                <Link href={'/authors'} className={styles.listChild}>
                     <p className={styles.navList} onClick={themeHandler}
                         style={{
-                            background: activeNav == 'about' ? '#f59115' : 'none',
-                            border: activeNav == 'about' && 'none',
-                            color: activeNav == 'about' && 'black',
+                            background: activeNav == 'Authors' ? '#f59115' : 'none',
+                            border: activeNav == 'Authors' && 'none',
+                            color: activeNav == 'Authors' && 'black',
                         }}
 
                     >
-                        About Us
+                        Authors
                     </p>
                 </Link>
                 <Link href={`/category/football-player`} className={styles.listChild}>
@@ -73,13 +73,26 @@ const Navbar = () => {
             </div>
             <div className={styles.list}>
                 <Link href="/" className={styles.listChild}>
-                    <p className={styles.navList}>
+                    <p className={styles.navList} onClick={themeHandler}
+                        style={{
+                            background: activeNav == 'Home' ? '#f59115' : 'none',
+                            border: activeNav == 'Home' && 'none',
+                            color: activeNav == 'Home' && 'black',
+                        }}
+                    >
                         Home
                     </p>
                 </Link>
-                <Link href={'/about'} className={styles.listChild}>
-                    <p className={styles.navList}>
-                        About Us
+                <Link href={'/authors'} className={styles.listChild}>
+                    <p className={styles.navList} onClick={themeHandler}
+                        style={{
+                            background: activeNav == 'Authors' ? '#f59115' : 'none',
+                            border: activeNav == 'Authors' && 'none',
+                            color: activeNav == 'Authors' && 'black',
+                        }}
+
+                    >
+                        Authors
                     </p>
                 </Link>
                 <Link href={`/category/football-player`} className={styles.listChild}>

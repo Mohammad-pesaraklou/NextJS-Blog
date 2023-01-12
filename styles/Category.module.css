@@ -14,17 +14,24 @@
 .text {
   margin: 40px 30px;
   font-family: "Josefin Sans";
-  font-size: 23px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 400;
+  color: #828282;
+  list-style-type: none;
+  border-bottom: 1px solid darkgray;
+  padding-bottom: 10px;
 }
 .authorText {
   margin: 40px 20px;
   font-family: "Josefin Sans";
-  font-size: 23px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 400;
   display: flex;
   align-items: center;
   gap: 10px;
+  color: #828282;
+  border-bottom: 1px solid darkgray;
+  padding-bottom: 10px;
 }
 .authorText:hover {
   color: #f59115;

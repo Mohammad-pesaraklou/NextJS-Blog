@@ -1,9 +1,9 @@
 import { Alert, Button, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { submitComment } from '../services';
+import { submitComment } from '../../services';
 // style
-import styles from '../styles/CommentForm.module.css';
+import styles from '../../styles/CommentForm.module.css';
 
 const CommentForm = ({ slug }) => {
 
